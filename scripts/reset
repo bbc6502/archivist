@@ -1,0 +1,6 @@
+#!/bin/bash
+mkdir -p archive
+rm -fr archive1
+rm -fr archive2
+mkdir -p archive1
+mkdir -p archive2

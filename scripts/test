@@ -1,0 +1,16 @@
+#!/bin/bash
+echo -n hello > archive/hello
+od -t x1 archive1/hello
+od -t x1 archive2/hello
+printf '\x31' | dd of=archive1/hello bs=1 seek=4 count=1 conv=notrunc
+od -t x1 archive1/hello
+od -t x1 archive2/hello
+cat archive/hello
+od -t x1 archive1/hello
+od -t x1 archive2/hello
+printf '\x31' | dd of=archive2/hello bs=1 seek=4 count=1 conv=notrunc
+od -t x1 archive1/hello
+od -t x1 archive2/hello
+cat archive/hello
+od -t x1 archive1/hello
+od -t x1 archive2/hello

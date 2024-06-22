@@ -1,0 +1,5 @@
+#!/bin/bash
+MOUNTED=$(mount | grep archivist)
+if [[ ! -z "${MOUNTED}" ]] ; then
+  umount archive
+fi

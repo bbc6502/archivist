@@ -1,0 +1,15 @@
+#!/bin/bash
+APT=$(which apt-get 2>/dev/null)
+DNF=$(which dnf 2>/dev/null)
+if [[ ! -z "${APT}" ]] ; then
+  for package in gcc fuse libfuse-dev make ; do
+    echo "Checking ${package}"
+    ${APT} -q list --installed 2>/dev/null | grep "^${package}\." | sudo ${APT} install -y ${package}
+  done
+elif [[ ! -z "${DNF}" ]] ; then
+  for package in gcc fuse fuse-devel make ; do
+    echo "Checking ${package}"
+    ${DNF} -q list --installed 2>/dev/null | grep "^${package}\." | sudo ${DNF} install -y ${package}
+  done
+fi
+make clean all

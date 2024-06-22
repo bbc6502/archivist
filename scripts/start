@@ -1,0 +1,8 @@
+#!/bin/bash
+mkdir -p archive
+mkdir -p archive1
+mkdir -p archive2
+MOUNTED=$(mount | grep archivist)
+if [[ -z "${MOUNTED}" ]] ; then
+  bin/archivist archive archive1 archive2
+fi
